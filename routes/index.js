@@ -1,6 +1,6 @@
 const express = require("express");
 const shopifyRouter = require("./shopifyRouter");
-
+const companyRouter = require("./companyRouter")
 function routerApi(app) {
   const router = express.Router();
   app.use("/", router);
@@ -10,6 +10,7 @@ function routerApi(app) {
   });
 
   router.use("/shopify", shopifyRouter);
+  router.use("/company", companyRouter);
 }
 
 module.exports = routerApi;
