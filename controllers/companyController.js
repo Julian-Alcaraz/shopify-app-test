@@ -2,15 +2,18 @@ const shopifyModel = require("../models/shopify");
 const axios = require("axios");
 
 async function getCompanyDataTest(req, res) {
+  console.log(`barrer ${process.env.COMPANY_SECRET_KEY}`)
   try {
     axios
-      .get("https://dev.fastenlogistics.com/api/v2", {
+      .get("https://dev.fastenlogistics.com/api/v2/master-data/items", {
         headers: {
-          Authorization: `barrer ${process.env.COMPANY_SECRET_KEY}`, // Reemplaza YOUR_SECRET_KEY con tu clave secreta
-          "Content-Type": "application/json",
+          "accept": "application/json",
+          'x-api-key':  `${process.env.COMPANY_SECRET_KEY}`,
+          // 'x-api-key':  `barrer ${process.env.COMPANY_SECRET_KEY}`,
+          // Authorization: `barrer ${process.env.COMPANY_SECRET_KEY}`, // Reemplaza YOUR_SECRET_KEY con tu clave secreta
         },
-        withCredentials: true,
-        httpsAgent: new (require('https').Agent)({ rejectUnauthorized: false }) // Ignorar errores de certificado
+        // withCredentials: true,
+        // httpsAgent: new (require('https').Agent)({ rejectUnauthorized: false }) // Ignorar errores de certificado
       })
       .then(
         async (response) => {
