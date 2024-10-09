@@ -17,7 +17,10 @@ async function getCompanyDataTest(req, res) {
       })
       .then(
         async (response) => {
-          res.status(200).send(response)
+          console.log(response)
+          console.log(response.data)
+          res.status(200).json(response.data)
+          // res.status(200).send(response.data)
           // if (response.data.success) {
           //   res
           //     .status(200)

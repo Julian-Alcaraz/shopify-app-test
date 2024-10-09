@@ -7,6 +7,7 @@ const cors = require('cors');
 const routerApi = require('./routes/index')
 
 const app = express();
+process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0'
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
